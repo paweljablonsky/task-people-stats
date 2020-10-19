@@ -3,13 +3,16 @@ package com.company;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hello world");
+        PeopleStats peopleStats = new PeopleStats(Paths.get("śćieżka", "do", "pliku"));
+
+        System.out.println(String.format("Liczba osób: %d", peopleStats.count()));
     }
 }
 class PeopleStats {
@@ -24,6 +27,9 @@ class PeopleStats {
         } catch (IOException e) {
             throw new IllegalStateException(e);
         }
+    }
+    public long count() {
+        return people.size();
     }
 }
 
